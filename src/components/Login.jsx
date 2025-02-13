@@ -53,7 +53,7 @@ const Login = () => {
             </label>
             <input
               type="email"
-              placeholder="your@email.com"
+              placeholder="your@gmail.com"
               className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
@@ -72,15 +72,6 @@ const Login = () => {
               onChange={(e) => setPassword(e.target.value)}
               required
             />
-          </div>
-          <div className="flex justify-end mb-4">
-            <button
-              type="button"
-              className="text-blue-500 underline text-sm"
-              onClick={() => alert("Redirect to password recovery page")}
-            >
-              Password forgotten?
-            </button>
           </div>
           <button
             type="submit"

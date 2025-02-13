@@ -72,7 +72,7 @@ const Signup = () => {
             <input
               type="email"
               name="email"
-              placeholder="your@email.com"
+              placeholder="your@gmail.com"
               value={formData.email}
               onChange={handleInputChange}
               className="w-full p-2 border rounded-lg focus:ring-2 focus:ring-blue-500"

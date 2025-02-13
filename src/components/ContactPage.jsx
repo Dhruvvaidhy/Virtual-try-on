@@ -141,19 +141,17 @@ const ContactPage = () => {
               <div>
                 <h3 className="text-lg font-semibold">Contact Info</h3>
                 <p className="text-sm text-gray-600 mt-2">
-                  <a href="mailto:contact@style.me" className="text-[#ef4a60]">
-                    contact@style.me
+                  <a href="" className="text-[#ef4a60]">
+                    dhruv786.oceanmtech@gmail.com
                   </a>
                 </p>
               </div>
               <div>
-                <h3 className="text-lg font-semibold">Asia</h3>
+                <h3 className="text-lg font-semibold">India</h3>
                 <p className="text-sm text-gray-600">
-                  Taipei, Taiwan
+                  801, Silver Trade Center, Uttran, Surat (394105)
                   <br />
-                  7F, No. 105, Songren Road,
-                  <br />
-                  Xinyi District
+                  Surat, Gujarat.
                 </p>
               </div>
               <div className="flex space-x-4">

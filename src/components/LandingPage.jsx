@@ -4,7 +4,8 @@ import { Link } from 'react-router-dom';
 
 const LandingPage = () => {
   return ( 
-    <header className="relative text-center flex flex-col items-center justify-center h-[100vh] overflow-hidden">
+    <header className="relative text-center flex flex-col items-center justify-center h-[100vh] pt-16 overflow-hidden">
+
         {/* Video Background */}
         <video
           className="absolute top-0 left-0 w-full h-full object-cover"

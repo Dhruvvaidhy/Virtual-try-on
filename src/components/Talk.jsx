@@ -9,7 +9,7 @@ const Talk = () => {
       
       {/* Contact Button */}
       <Link to="/contact">
-        <button className="bg-[#ef4a60] text-white font-semibold py-3 px-8 rounded-full text-lg hover:bg-pink-600">
+        <button className="bg-[#ef4a60] cursor-pointer text-white font-semibold py-3 px-8 rounded-full text-lg hover:bg-white hover:text-black">
           CONTACT
         </button>
       </Link>
