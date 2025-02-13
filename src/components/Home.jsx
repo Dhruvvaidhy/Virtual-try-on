@@ -2,7 +2,7 @@ import React from 'react'
 import Header from './LandingPage'
 import Talk from './Talk'
 import Details from './Details'
-import Navbar from './Navbar'
+import Footer from './Footer'
 
 
 const Home = () => {
@@ -14,6 +14,7 @@ const Home = () => {
       <Header/>
       <Details/>
       <Talk/>
+      <Footer/>
     </div>
     </>
   )

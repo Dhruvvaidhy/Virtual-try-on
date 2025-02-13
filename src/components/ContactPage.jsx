@@ -45,7 +45,7 @@ const ContactPage = () => {
           </h2>
           <h1 className="text-4xl lg:text-5xl font-bold mb-4">Ask us anything!</h1>
           <p className="text-lg lg:text-xl">
-            We'd love to hear from you. We’re confident you’ll find Style.me to
+            We'd love to hear from you. We’re confident you’ll find Virtual-try-on to
             be the perfect fit.
           </p>
         </div>
@@ -155,13 +155,13 @@ const ContactPage = () => {
                 </p>
               </div>
               <div className="flex space-x-4">
-                <a href="#" className="text-gray-600 hover:text-pink-500">
+                <a href="https://www.linkedin.com/in/dhruv-vaidhy-4230552b7/" className="text-gray-600 hover:text-blue-700">
                   <i className="fab fa-linkedin"></i>
                 </a> 
-                <a href="#" className="text-gray-600 hover:text-pink-500">
-                  <i className="fab fa-twitter"></i>
+                <a href="https://github.com/Dhruvvaidhy" className="text-gray-600 hover:text-black">
+                  <i className="fab fa-github"></i>
                 </a>
-                <a href="#" className="text-gray-600 hover:text-pink-500">
+                <a href="https://www.youtube.com/@RockyGaming_23" className="text-gray-600 hover:text-red-500">
                   <i className="fab fa-youtube"></i>
                 </a> 
               </div>
@@ -173,7 +173,7 @@ const ContactPage = () => {
   );
 };
 
-export default ContactPage;
+export default ContactPage; 
 
 
 
@@ -190,7 +190,7 @@ export default ContactPage;
 //             backgroundImage:
 //               "url('https://style.me/wp-content/uploads/2021/01/city-view-new-york.jpg')",
 //           }}
-//         >
+//         > 
 //           <div className="absolute inset-0 bg-black opacity-50"></div>
 //         </div>
 //         <div className="relative text-center text-white py-32 lg:py-38">

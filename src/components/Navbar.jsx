@@ -35,7 +35,7 @@ const Navbar = () => {
           <Link to="/virtual" className="bg-[#ef4a60] px-4 py-1 text-lg font-semibold rounded-full text-white hover:bg-white hover:text-black">
             Get Started
           </Link>
-        </div>
+        </div> 
 
         {/* Mobile Menu Button */}
         <button className="md:hidden text-white text-2xl" onClick={toggleMenu}>
@@ -51,7 +51,7 @@ const Navbar = () => {
       >
         {/* Mobile Menu Logo */}
         <div className="flex items-center mb-6">
-          <img src={logo} alt="Rockme Logo" className="h-28 w-auto" />
+          <img src={logo} alt="Rockme Logo" className="h-24 w-auto" />
         </div>
 
         {/* Mobile Menu Links */}
