@@ -12,10 +12,10 @@ const Talk = () => {
         <button className="bg-[#ef4a60] cursor-pointer text-white font-semibold py-3 px-8 rounded-full text-lg hover:bg-white hover:text-black">
           CONTACT
         </button>
-      </Link>
+      </Link>  
     </div>
   );
 };
 
-export default Talk;
+export default Talk;  
 

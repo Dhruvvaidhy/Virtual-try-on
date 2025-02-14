@@ -6,6 +6,7 @@ import ContactPage from './components/ContactPage';
 import VirtualFitTool from './components/VirtualFitTool';
 import Signup from './components/Signup';
 import Login from './components/Login';
+import ErrorPage from './components/ErrorPage';
 
 const App = () => {
   return (
@@ -19,6 +20,7 @@ const App = () => {
       <Route path="/virtual" element={<VirtualFitTool/>} />
       <Route path="/signup" element={<Signup/>} />
       <Route path="/login" element={<Login/>} />
+      <Route path="*" element={<ErrorPage/>} />
 
       </Routes>
    </Router>   

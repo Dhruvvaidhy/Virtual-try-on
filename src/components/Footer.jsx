@@ -14,9 +14,7 @@ const Footer = () => {
 
         {/* Copyright & Links */}
         <div className="text-sm text-center md:text-left">
-          © Copyright 2025 <span className="text-white">Virtual-try-on</span> |  
-          <a href="/terms" className="hover:text-white mx-2">Terms & Conditions</a> -  
-          <a href="/privacy" className="hover:text-white ml-2">Privacy Policy</a>
+          © Copyright 2025 <span className="text-white">Virtual-try-on</span> 
         </div>
 
         {/* Social Icons */}

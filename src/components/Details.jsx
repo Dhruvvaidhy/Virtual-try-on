@@ -9,10 +9,10 @@ const Details = () => {
         {/* Left Side - Details */}
         <div className="lg:w-1/2 mb-10 lg:mb-0 lg:pr-10">
           <h2 className="text-3xl font-bold mb-6 text-gray-800">
-            How to use
+            How to use Virtual-try-on
           </h2>
           <p className="text-gray-700 mb-4 leading-relaxed">
-            <strong>1. Input Image:</strong> Provide an image of a person.
+            <strong>1. Model Image:</strong> Provide an image of a person.
           </p>
           <p className="text-gray-700 mb-4 leading-relaxed">
             <strong>2. Cloth Image:</strong> Upload a clothing image, preferably with a white or transparent background.
@@ -35,7 +35,7 @@ const Details = () => {
           <img
             src={t}
             alt="Try-on Diffusion Example"
-            className="w-full max-w-md mx-auto rounded-lg shadow-md"
+            // className="w-full max-w-md mx-auto rounded-lg"
           />
         </div>
         

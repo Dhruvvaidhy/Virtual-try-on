@@ -1,5 +1,5 @@
 import React from 'react'
-import Header from './LandingPage'
+import LandingPage from './LandingPage'
 import Talk from './Talk'
 import Details from './Details'
 import Footer from './Footer'
@@ -11,7 +11,7 @@ const Home = () => {
    
     <div className="relative min-h-screen bg-black text-white">
       
-      <Header/>
+      <LandingPage/>
       <Details/>
       <Talk/>
       <Footer/>

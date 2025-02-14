@@ -3,3 +3,14 @@
 @import '@fortawesome/fontawesome-free/css/all.css';
 
 
+@media (max-width: 600px) {
+    body {
+       font-size: 14px;
+    }
+ }
+ 
+body {
+    overflow-x: hidden;
+ }
+
+

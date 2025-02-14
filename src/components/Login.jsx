@@ -2,32 +2,57 @@ import React, { useState } from "react";
 import { signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import { auth } from "../firebaseConfig";
+import { useDispatch } from "react-redux";
+import { setUser } from "../redux/authSlice";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
 
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      await signInWithEmailAndPassword(auth, email, password);
+      const userCredential = await signInWithEmailAndPassword(auth, email, password);
+      dispatch(setUser(userCredential.user)); // Store user in Redux
       navigate("/"); // Redirect to dashboard after successful login
     } catch (err) {
       setError("Invalid email or password. Please try again.");
     }
   };
 
+  // const handleLogin = async (e) => {
+  //   e.preventDefault();
+  //   try {
+  //     await signInWithEmailAndPassword(auth, email, password);
+  //     navigate("/"); // Redirect to dashboard after successful login
+  //   } catch (err) {
+  //     setError("Invalid email or password. Please try again.");
+  //   }
+  // };
+
   const handleGoogleLogin = async () => {
     const provider = new GoogleAuthProvider();
     try {
-      await signInWithPopup(auth, provider);
+      const userCredential = await signInWithPopup(auth, provider);
+      dispatch(setUser(userCredential.user)); // Store user in Redux
       navigate("/"); // Redirect to dashboard after successful login
     } catch (err) {
       setError("Google Sign-In failed. Please try again.");
     }
   };
+  // const handleGoogleLogin = async () => {
+  //   const provider = new GoogleAuthProvider();
+  //   try {
+  //     await signInWithPopup(auth, provider);
+  //     navigate("/"); // Redirect to dashboard after successful login
+  //   } catch (err) {
+  //     setError("Google Sign-In failed. Please try again.");
+  //   }
+  // };
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100">
