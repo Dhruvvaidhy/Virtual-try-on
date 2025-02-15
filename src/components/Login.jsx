@@ -89,7 +89,7 @@ const Login = () => {
             alt="Google"
             className="w-6 h-6 mr-2"
           />
-          Sign in with Google
+          Login with Google
         </button>
         <p className="text-center text-gray-600 mb-4">or continue with email</p>
         {error && <p className="text-red-500 text-center mb-4">{error}</p>}
@@ -124,7 +124,7 @@ const Login = () => {
             type="submit"
             className="w-full bg-green-200 py-2 rounded-lg text-black font-semibold hover:bg-green-300"
           >
-            Sign In
+            Login
           </button>
         </form>
         <p className="text-center mt-6 text-gray-600">
