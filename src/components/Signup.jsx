@@ -21,29 +21,76 @@ const Signup = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+
   const handleSignup = async (e) => {
     e.preventDefault();
+    
+    if (formData.password.length < 6) {
+      setError("Password must be at least 6 characters long!");
+      return;
+    }
+  
     if (formData.password !== formData.confirmPassword) {
       setError("Passwords do not match!");
       return;
     }
+  
     try {
       const userCredential = await createUserWithEmailAndPassword(
         auth,
         formData.email,
         formData.password
       );
+  
       await updateProfile(userCredential.user, {
         displayName: formData.email.split("@")[0],
       });
-      dispatch(setUser(userCredential.user)); // Store user in Redux
-
+  
+      dispatch(setUser({ 
+        uid: userCredential.user.uid, 
+        email: userCredential.user.email, 
+        displayName: userCredential.user.displayName 
+      })); // Only store serializable data
+  
       alert("Signup Successful!");
-      navigate("/"); // Redirect to Login page after signup
+      navigate("/");
     } catch (err) {
-      setError(err.message);
+      if (err.code === "auth/email-already-in-use") {
+        setError("This email is already registered. Try logging in.");
+      } else if (err.code === "auth/invalid-email") {
+        setError("Invalid email format. Please enter a valid email.");
+      } else if (err.code === "auth/weak-password") {
+        setError("Password should be at least 6 characters.");
+      } else {
+        setError(err.message);
+      }
     }
   };
+  
+
+  // const handleSignup = async (e) => {
+  //   e.preventDefault();
+  //   if (formData.password !== formData.confirmPassword) {
+  //     setError("Passwords do not match!");
+  //     return;
+  //   }
+  //   try {
+  //     const userCredential = await createUserWithEmailAndPassword(
+  //       auth,
+  //       formData.email,
+  //       formData.password
+  //     );
+  //     await updateProfile(userCredential.user, {
+  //       displayName: formData.email.split("@")[0],
+  //     });
+  //     dispatch(setUser(userCredential.user)); // Store user in Redux
+
+  //     alert("Signup Successful!");
+  //     navigate("/"); // Redirect to Login page after signup
+  //   } catch (err) {
+  //     setError(err.message);
+  //   }
+  // };
 
 
   const isMobile = () => {
