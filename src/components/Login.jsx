@@ -79,7 +79,7 @@ const Login = () => {
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100">
       <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
-        <h1 className="text-3xl font-bold text-center mb-4">Sign in to your account</h1>
+        <h1 className="text-3xl font-bold text-center mb-4">Login to your account</h1>
         <button
           onClick={handleGoogleLogin}
           className="w-full flex items-center justify-center bg-green-200 text-black py-2 rounded-lg mb-4 hover:bg-green-300"
