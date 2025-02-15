@@ -13,6 +13,9 @@ const Login = () => {
   const dispatch = useDispatch();
 
 
+
+
+
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
@@ -34,16 +37,35 @@ const Login = () => {
   //   }
   // };
 
+  const isMobile = () => {
+    return /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+  };
+
   const handleGoogleLogin = async () => {
     const provider = new GoogleAuthProvider();
     try {
-      const userCredential = await signInWithPopup(auth, provider);
-      dispatch(setUser(userCredential.user)); // Store user in Redux
-      navigate("/"); // Redirect to dashboard after successful login
+      if (isMobile()) {
+        await signInWithRedirect(auth, provider); // Use Redirect on Mobile
+      } else {
+        await signInWithPopup(auth, provider); // Use Popup on Desktop
+      }
+      navigate("/"); // Redirect to Home page
     } catch (err) {
       setError("Google Sign-In failed. Please try again.");
     }
   };
+  
+
+  // const handleGoogleLogin = async () => {
+  //   const provider = new GoogleAuthProvider();
+  //   try {
+  //     const userCredential = await signInWithPopup(auth, provider);
+  //     dispatch(setUser(userCredential.user)); // Store user in Redux
+  //     navigate("/"); // Redirect to dashboard after successful login
+  //   } catch (err) {
+  //     setError("Google Sign-In failed. Please try again.");
+  //   }
+  // };
   // const handleGoogleLogin = async () => {
   //   const provider = new GoogleAuthProvider();
   //   try {

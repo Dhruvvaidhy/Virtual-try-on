@@ -45,16 +45,36 @@ const Signup = () => {
     }
   };
 
+
+  const isMobile = () => {
+    return /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+  };
+  
   const handleGoogleSignup = async () => {
     const provider = new GoogleAuthProvider();
     try {
-      await signInWithPopup(auth, provider);
+      if (isMobile()) {
+        await signInWithRedirect(auth, provider); // Use Redirect on Mobile
+      } else {
+        await signInWithPopup(auth, provider); // Use Popup on Desktop
+      }
       alert("Signup with Google Successful!");
-      navigate("/"); // Redirect to Login page after Google signup
+      navigate("/"); // Redirect to Home page
     } catch (err) {
       setError(err.message);
     }
   };
+
+  // const handleGoogleSignup = async () => {
+  //   const provider = new GoogleAuthProvider();
+  //   try {
+  //     await signInWithPopup(auth, provider);
+  //     alert("Signup with Google Successful!");
+  //     navigate("/"); // Redirect to Login page after Google signup
+  //   } catch (err) {
+  //     setError(err.message);
+  //   }
+  // };
 
   return (
     <div className="min-h-screen bg-gray-100 flex items-center justify-center">
@@ -70,7 +90,7 @@ const Signup = () => {
             alt="Google"
             className="w-6 h-6 mr-2"
           />
-          Sign in with Google
+          Sign up with Google
         </button>
         <p className="text-center text-gray-600 mb-4">or continue with email</p>
         {error && <p className="text-red-500 text-center mb-4">{error}</p>}
@@ -121,7 +141,7 @@ const Signup = () => {
             type="submit"
             className="w-full bg-green-200 text-black py-2 rounded-lg hover:bg-green-300"
           >
-            Get Started
+            Sign up
           </button>
         </form>
         <p className="text-center text-gray-600 mt-6">

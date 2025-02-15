@@ -9,6 +9,23 @@ import Login from './components/Login';
 import ErrorPage from './components/ErrorPage';
 
 const App = () => {
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    const handleRedirect = async () => {
+      try {
+        const result = await getRedirectResult(auth);
+        if (result) {
+          dispatch(setUser(result.user));
+        }
+      } catch (error) {
+        console.error("Error during redirect:", error);
+      }
+    };
+    handleRedirect();
+  }, [dispatch]);
+  
   return (
    <Router>
       <Navbar/>
