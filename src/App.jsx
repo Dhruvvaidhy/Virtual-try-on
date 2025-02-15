@@ -7,6 +7,8 @@ import VirtualFitTool from './components/VirtualFitTool';
 import Signup from './components/Signup';
 import Login from './components/Login';
 import ErrorPage from './components/ErrorPage';
+import { useDispatch } from "react-redux";
+import { setUser } from "./redux/authSlice";
 
 const App = () => {
 
@@ -25,7 +27,7 @@ const App = () => {
     };
     handleRedirect();
   }, [dispatch]);
-  
+
   return (
    <Router>
       <Navbar/>
