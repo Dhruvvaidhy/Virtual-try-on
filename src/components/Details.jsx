@@ -37,8 +37,7 @@ const Details = () => {
             alt="Try-on Diffusion Example"
             // className="w-full max-w-md mx-auto rounded-lg"
           />
-        </div>
-        
+        </div>        
       </div>
     </div>
   );

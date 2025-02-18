@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { FaBars, FaTimes, FaUserCircle } from "react-icons/fa";
+import { FaBars, FaTimes, FaUserCircle, FaSignOutAlt } from "react-icons/fa";
 import { auth } from "../firebaseConfig";
 import { onAuthStateChanged, signOut } from "firebase/auth";
 import logo from "../assets/logo.png";
@@ -35,7 +35,6 @@ const Navbar = () => {
   return (
     <nav className="sticky top-0 bg-black text-white p-3 w-full z-50 shadow-lg">
       <div className="container mx-auto flex justify-between items-center">
-        
         {/* 🔹 Logo */}
         <Link to="/" className="flex items-center">
           <img src={logo} alt="Logo" className="h-16 w-auto" />
@@ -43,12 +42,20 @@ const Navbar = () => {
 
         {/* 🔹 Desktop Menu */}
         <div className="hidden md:flex items-center space-x-6 text-lg flex-grow justify-center">
-          <Link to="/" className="hover:text-[#ef4a60]">Home</Link>
-          <Link to="/contact" className="hover:text-[#ef4a60]">Contact</Link>
+          <Link to="/" className="hover:text-[#ef4a60]">
+            Home
+          </Link>
+          <Link to="/contact" className="hover:text-[#ef4a60]">
+            Contact
+          </Link>
           {!user && (
             <>
-              <Link to="/signup" className="hover:text-[#ef4a60]">Signup</Link>
-              <Link to="/login" className="hover:text-[#ef4a60]">Login</Link>
+              <Link to="/signup" className="hover:text-[#ef4a60]">
+                Signup
+              </Link>
+              <Link to="/login" className="hover:text-[#ef4a60]">
+                Login
+              </Link>
             </>
           )}
         </div>
@@ -71,20 +78,43 @@ const Navbar = () => {
               <FaUserCircle />
             </button>
             {dropdownOpen && (
+  <div className="absolute right-0 mt-2 w-48 bg-gray-900 text-white rounded-lg shadow-lg border border-gray-700">
+    <div className="px-4 py-2 text-center border-b border-gray-700">
+      <FaUserCircle className="text-4xl mx-auto" />
+      <p className="mt-2 font-semibold">{user.displayName || "User"}</p>
+      <p className="text-sm text-gray-400">{user.email}</p>
+    </div>
+    <button
+      onClick={handleLogout}
+      className="w-full flex items-center justify-center gap-2 px-4 py-2 text-white hover:bg-gray-700"
+    >
+      <FaSignOutAlt className="text-xl" />
+      Logout
+    </button>
+            {/* {dropdownOpen && (
               <div className="absolute right-0 mt-2 w-48 bg-gray-900 text-white rounded-lg shadow-lg border border-gray-700">
                 <div className="px-4 py-2 text-center border-b border-gray-700">
                   <FaUserCircle className="text-4xl mx-auto" />
-                  <p className="mt-2 font-semibold">{user.displayName || "User"}</p>
+                  <p className="mt-2 font-semibold">
+                    {user.displayName || "User"}
+                  </p>
                   <p className="text-sm text-gray-400">{user.email}</p>
                 </div>
                 <button
                   onClick={handleLogout}
+                  className="w-full flex items-center justify-center gap-2 px-4 py-2 text-white hover:bg-gray-700"
+                >
+                  <FaSignOutAlt className="text-xl" />
+                  Logout
+                </button>
+                {/* <button
+                  onClick={handleLogout}
                   className="w-full text-left px-4 py-2 text-white hover:bg-gray-700"
                 >
                   Logout
-                </button>
+                </button> */}
               </div>
-            )}
+            )} 
           </div>
         )}
 
@@ -97,7 +127,9 @@ const Navbar = () => {
       {/* 🔹 Mobile Menu */}
       <div
         className={`fixed top-0 left-0 w-full h-full bg-black bg-opacity-95 flex flex-col items-center pt-10 transform transition-all duration-300 ${
-          isOpen ? "opacity-100 scale-100" : "opacity-0 scale-90 pointer-events-none"
+          isOpen
+            ? "opacity-100 scale-100"
+            : "opacity-0 scale-90 pointer-events-none"
         }`}
       >
         {/* 🔹 Mobile Menu Logo */}
@@ -106,7 +138,9 @@ const Navbar = () => {
           {user && (
             <div className="text-center mt-4 ">
               <FaUserCircle className="text-4xl mx-auto text-white " />
-              <p className="text-white font-semibold mt-2">{user.displayName || "User"}</p>
+              <p className="text-white font-semibold mt-2">
+                {user.displayName || "User"}
+              </p>
               <p className="text-gray-400 text-sm">{user.email}</p>
             </div>
           )}
@@ -114,28 +148,52 @@ const Navbar = () => {
 
         {/* 🔹 Mobile Menu Links */}
         <div className="flex flex-col items-center space-y-4 text-xl">
-          <Link to="/" className="text-white hover:text-[#ef4a60]" onClick={toggleMenu}>
+          <Link
+            to="/"
+            className="text-white hover:text-[#ef4a60]"
+            onClick={toggleMenu}
+          >
             Home
           </Link>
-          <Link to="/contact" className="text-white hover:text-[#ef4a60]" onClick={toggleMenu}>
+          <Link
+            to="/contact"
+            className="text-white hover:text-[#ef4a60]"
+            onClick={toggleMenu}
+          >
             Contact
           </Link>
           {!user ? (
             <>
-              <Link to="/signup" className="text-white hover:text-[#ef4a60]" onClick={toggleMenu}>
+              <Link
+                to="/signup"
+                className="text-white hover:text-[#ef4a60]"
+                onClick={toggleMenu}
+              >
                 Signup
               </Link>
-              <Link to="/login" className="text-white hover:text-[#ef4a60]" onClick={toggleMenu}>
+              <Link
+                to="/login"
+                className="text-white hover:text-[#ef4a60]"
+                onClick={toggleMenu}
+              >
                 Login
               </Link>
             </>
           ) : (
             <button
               onClick={handleLogout}
-              className="mt-3 text-xl bg-red-500 px-6 py-2 rounded-full text-white hover:bg-red-700"
+              className="mt-3 text-xl flex items-center gap-2 bg-[#ef4a60] px-6 py-2 rounded-full text-white hover:bg-red-700"
             >
+              <FaSignOutAlt className="text-2xl" />
               Logout
             </button>
+            // <button
+            //   onClick={handleLogout}
+            //   className="mt-3 text-xl bg-red-500 px-6 py-2 rounded-full text-white hover:bg-red-700"
+            // >
+
+            //   Logout
+            // </button>
           )}
         </div>
 
@@ -149,7 +207,10 @@ const Navbar = () => {
         </Link>
 
         {/* 🔹 Close Button */}
-        <button className="absolute top-5 right-6 text-white text-3xl" onClick={toggleMenu}>
+        <button
+          className="absolute top-5 right-6 text-white text-3xl"
+          onClick={toggleMenu}
+        >
           <FaTimes />
         </button>
       </div>
@@ -159,8 +220,6 @@ const Navbar = () => {
 
 export default Navbar;
 
-
-
 // import React, { useState, useEffect } from "react";
 // import { Link, useNavigate } from "react-router-dom";
 // import { FaBars, FaTimes, FaUserCircle } from "react-icons/fa";
@@ -202,159 +261,7 @@ export default Navbar;
 //   return (
 //     <nav className="sticky top-0 bg-black text-white p-3 w-full z-50 shadow-lg">
 //       <div className="container mx-auto flex justify-between items-center">
-        
-//         {/* 🔹 Logo */}
-//         <Link to="/" className="flex items-center">
-//           <img src={logo} alt="Logo" className="h-16 w-auto" />
-//         </Link>
 
-//         {/* 🔹 Desktop Menu with Authentication Controls */}
-//         <div className="hidden md:flex items-center space-x-6 text-lg">
-//           <Link to="/" className="hover:text-[#ef4a60]">Home</Link>
-//           <Link to="/contact" className="hover:text-[#ef4a60]">Contact</Link>
-
-//           {user ? (
-//             <div className="relative">
-//               {/* 🔹 User Icon Button */}
-//               <button
-//                 onClick={toggleDropdown}
-//                 className="focus:outline-none text-white text-3xl"
-//               >
-//                 <FaUserCircle />
-//               </button>
-
-//               {/* 🔹 Dropdown Box */}
-//               {dropdownOpen && (
-//                 <div className="absolute right-0 mt-2 w-48 bg-gray-900 text-white rounded-lg shadow-lg border border-gray-700">
-//                   <div className="px-4 py-2 text-center border-b border-gray-700">
-//                     <FaUserCircle className="text-4xl mx-auto" />
-//                     <p className="mt-2 font-semibold">{user.displayName || "User"}</p>
-//                     <p className="text-sm text-gray-400">{user.email}</p>
-//                   </div>
-//                   <button
-//                     onClick={handleLogout}
-//                     className="w-full text-left px-4 py-2 text-white hover:bg-gray-700"
-//                   >
-//                     Logout
-//                   </button>
-//                 </div>
-//               )}
-//             </div>
-//           ) : (
-//             <>
-//               <Link to="/signup" className="hover:text-[#ef4a60]">Signup</Link>
-//               <Link to="/login" className="hover:text-[#ef4a60]">Login</Link>
-//             </>
-//           )}
-
-//           {/* 🔹 Get Started Button */}
-//           <Link to="/virtual" className="ml-4 bg-[#ef4a60] px-5 py-2 rounded-full text-white text-lg font-semibold hover:bg-white hover:text-black transition duration-300">
-//             Get Started
-//           </Link>
-//         </div>
-
-//         {/* 🔹 Mobile Menu Button */}
-//         <button className="md:hidden text-white text-2xl" onClick={toggleMenu}>
-//           {isOpen ? <FaTimes /> : <FaBars />}
-//         </button>
-//       </div>
-
-//       {/* 🔹 Mobile Menu */}
-//       <div
-//         className={`fixed top-0 left-0 w-full h-full bg-black bg-opacity-95 flex flex-col items-center justify-start pt-10 transform transition-all duration-300 ${
-//           isOpen ? "opacity-100 scale-100" : "opacity-0 scale-90 pointer-events-none"
-//         }`}
-//       >
-//         {/* 🔹 Mobile Menu Logo */}
-//         <div className="flex items-center mb-6">
-//           <img src={logo} alt="Logo" className="h-24 w-auto" />
-//         </div>
-
-//         {/* 🔹 Mobile Menu Links */}
-//         <Link to="/" className="text-xl py-3 text-white hover:text-[#ef4a60]" onClick={toggleMenu}>Home</Link>
-//         <Link to="/contact" className="text-xl py-3 text-white hover:text-[#ef4a60]" onClick={toggleMenu}>Contact</Link>
-
-//         {/* 🔹 Mobile Authentication Controls */}
-//         {user ? (
-//           <>
-//             <p className="text-white mt-6 text-xl">{user.displayName || "User"}</p>
-//             <button
-//               onClick={handleLogout}
-//               className="mt-3 text-xl bg-red-500 px-6 py-2 rounded-full text-white hover:bg-red-700"
-//             >
-//               Logout
-//             </button>
-//           </>
-//         ) : (
-//           <>
-//             <Link to="/signup" className="mt-6 text-xl bg-[#ef4a60] px-6 py-2 rounded-full text-white hover:bg-white hover:text-black" onClick={toggleMenu}>
-//               Signup
-//             </Link>
-//             <Link to="/login" className="mt-3 text-xl bg-[#ef4a60] px-6 py-2 rounded-full text-white hover:bg-white hover:text-black" onClick={toggleMenu}>
-//               Login
-//             </Link>
-//           </>
-//         )}
-
-//         {/* 🔹 Get Started Button */}
-//         <Link to="/virtual" className="mt-6 bg-[#ef4a60] px-6 py-2 rounded-full text-white text-xl font-semibold hover:bg-blue-600 transition duration-300" onClick={toggleMenu}>
-//           Get Started
-//         </Link>
-
-//         {/* 🔹 Close Button */}
-//         <button className="absolute top-5 right-6 text-white text-3xl" onClick={toggleMenu}>
-//           <FaTimes />
-//         </button>
-//       </div>
-//     </nav>
-//   );
-// };
-
-// export default Navbar;
-
-
-// import React, { useState, useEffect } from "react";
-// import { Link, useNavigate } from "react-router-dom";
-// import { FaBars, FaTimes, FaUserCircle } from "react-icons/fa";
-// import { auth } from "../firebaseConfig";
-// import { onAuthStateChanged, signOut } from "firebase/auth";
-// import logo from "../assets/logo.png";
-
-// const Navbar = () => {
-//   const [isOpen, setIsOpen] = useState(false);
-//   const [user, setUser] = useState(null);
-//   const [dropdownOpen, setDropdownOpen] = useState(false);
-//   const navigate = useNavigate();
-
-//   // 🔹 Listen for authentication changes
-//   useEffect(() => {
-//     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-//       setUser(currentUser);
-//     });
-//     return () => unsubscribe();
-//   }, []);
-
-//   // 🔹 Toggle mobile menu
-//   const toggleMenu = () => {
-//     setIsOpen(!isOpen);
-//   };
-
-//   // 🔹 Toggle user dropdown
-//   const toggleDropdown = () => {
-//     setDropdownOpen(!dropdownOpen);
-//   };
-
-//   // 🔹 Logout function
-//   const handleLogout = async () => {
-//     await signOut(auth);
-//     setDropdownOpen(false);
-//     navigate("/");
-//   };
-
-//   return (
-//     <nav className="sticky top-0 bg-black text-white p-3 w-full z-50 shadow-lg">
-//       <div className="container mx-auto flex justify-between items-center">
-        
 //         {/* 🔹 Logo */}
 //         <Link to="/" className="flex items-center">
 //           <img src={logo} alt="Logo" className="h-16 w-auto" />
@@ -454,8 +361,6 @@ export default Navbar;
 
 // export default Navbar;
 
-
-
 // import React, { useState, useEffect } from "react";
 // import { Link, useNavigate } from "react-router-dom";
 // import { FaBars, FaTimes, FaUserCircle } from "react-icons/fa";
@@ -497,7 +402,7 @@ export default Navbar;
 //   return (
 //     <nav className="sticky top-0 bg-black text-white p-3 w-full z-50 shadow-lg">
 //       <div className="container mx-auto flex justify-between items-center">
-        
+
 //         {/* 🔹 Logo */}
 //         <Link to="/" className="flex items-center">
 //           <img src={logo} alt="Logo" className="h-16 w-auto" />
@@ -507,7 +412,7 @@ export default Navbar;
 //         <ul className="hidden md:flex space-x-6 text-lg">
 //           <Link to="/" className="hover:text-[#ef4a60]">Home</Link>
 //           <Link to="/contact" className="hover:text-[#ef4a60]">Contact</Link>
-//         </ul> 
+//         </ul>
 
 //         {/*  User Authentication Controls  */}
 //         <div className="hidden md:flex items-center space-x-4">
@@ -574,7 +479,7 @@ export default Navbar;
 
 //         {/* 🔹 Mobile Menu Links */}
 //         <Link to="/" className="text-xl py-3 text-white hover:text-[#ef4a60]" onClick={toggleMenu}>Home</Link>
-       
+
 //         <Link to="/contact" className="text-xl py-3 text-white hover:text-[#ef4a60]" onClick={toggleMenu}>Contact</Link>
 
 //         {/* 🔹 Mobile Authentication Controls */}
@@ -615,7 +520,6 @@ export default Navbar;
 
 // export default Navbar;
 
-
 // import React, { useState, useEffect } from "react";
 // import { Link, useNavigate } from "react-router-dom";
 // import { FaBars, FaTimes, FaUserCircle } from "react-icons/fa";
@@ -650,7 +554,7 @@ export default Navbar;
 //   return (
 //     <nav className="sticky top-0 bg-black text-white p-2 w-full z-50 shadow-lg">
 //       <div className="container mx-auto flex justify-between items-center">
-        
+
 //         {/* 🔹 Logo */}
 //         <div className="flex">
 //           <img src={logo} alt="Logo" className="h-16 w-auto" />
@@ -660,7 +564,7 @@ export default Navbar;
 //         <ul className="hidden md:flex space-x-6 text-lg">
 //           <Link to="/" className="hover:text-[#ef4a60]">Home</Link>
 //           <Link to="/contact" className="hover:text-[#ef4a60]">Contact</Link>
-//         </ul> 
+//         </ul>
 
 //         {/* 🔹 User Authentication Controls */}
 //         <div className="hidden md:flex items-center space-x-4">
@@ -752,7 +656,6 @@ export default Navbar;
 
 // export default Navbar;
 
-
 // import React, { useState } from "react";
 // import { Link } from "react-router-dom";
 // import { FaBars, FaTimes } from "react-icons/fa";
@@ -769,7 +672,7 @@ export default Navbar;
 //   return (
 //     <nav className="sticky top-0 bg-black text-white p-2 w-full z-50 shadow-lg">
 //       <div className="container mx-auto flex justify-between items-center">
-        
+
 //         {/* Logo (Visible in both desktop & mobile) */}
 //         <div className="flex">
 //           <img src={logo} alt="Rockme Logo" className="h-22 w-auto" />
@@ -780,7 +683,7 @@ export default Navbar;
 //           <Link to="/" className="hover:text-[#ef4a60]">Home</Link>
 //           <Link to="/about" className="hover:text-[#ef4a60]">About</Link>
 //           <Link to="/contact" className="hover:text-[#ef4a60]">Contact</Link>
-//         </ul> 
+//         </ul>
 
 //         {/* Desktop Buttons */}
 //         <div className="hidden md:flex items-center space-x-4">
@@ -790,7 +693,7 @@ export default Navbar;
 //           <Link to="/virtual" className="bg-[#ef4a60] px-4 py-1 text-lg font-semibold rounded-full text-white hover:bg-white hover:text-black">
 //             Get Started
 //           </Link>
-//         </div> 
+//         </div>
 
 //         {/* Mobile Menu Button */}
 //         <button className="md:hidden text-white text-2xl" onClick={toggleMenu}>
@@ -833,8 +736,6 @@ export default Navbar;
 
 // export default Navbar;
 
-
-
 // import React, { useState } from "react";
 // import { Link } from "react-router-dom";
 // import { FaBars, FaTimes } from "react-icons/fa";
@@ -848,7 +749,7 @@ export default Navbar;
 //   };
 
 //   return (
-// <nav className="sticky top-0 bg-black text-white p-4  w-full z-50 shadow-lg"> 
+// <nav className="sticky top-0 bg-black text-white p-4  w-full z-50 shadow-lg">
 //      <div className="container mx-auto flex justify-between items-center">
 
 //         {/* Logo */}
@@ -896,8 +797,6 @@ export default Navbar;
 // };
 
 // export default Navbar;
-
-
 
 // import React, { useState } from "react";
 // import { Link } from "react-router-dom";
