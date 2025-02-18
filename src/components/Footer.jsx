@@ -23,10 +23,10 @@ const Footer = () => {
             <FaLinkedin className="text-gray-400 hover:text-blue-700 text-lg" />
           </a>
           <a href="https://github.com/Dhruvvaidhy" target="_blank" rel="noopener noreferrer">
-            <FaGithub className="text-gray-400 hover:text-black text-lg" />
+            <FaGithub className="text-gray-400 hover:text-white text-lg" />
           </a>
           <a href="https://www.instagram.com/_dhulu_786?igsh=YWJ1eHpmdmNkdThh" target="_blank" rel="noopener noreferrer">
-            <FaInstagram className="text-gray-400 hover:text-white text-lg" />
+            <FaInstagram className="text-gray-400 hover:text-pink-400 text-lg" />
           </a>
           <a href="https://www.youtube.com/@RockyGaming_23" target="_blank" rel="noopener noreferrer">
             <FaYoutube className="text-gray-400 hover:text-red-500 text-lg" />

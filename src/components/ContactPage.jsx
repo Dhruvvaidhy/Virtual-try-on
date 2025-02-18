@@ -82,6 +82,7 @@ const ContactPage = () => {
                   required
                 >
                   <option>Select Country*</option>
+                  <option>India</option>
                   <option>United States</option>
                   <option>Canada</option>
                   <option>Other</option>
@@ -140,10 +141,8 @@ const ContactPage = () => {
             <div className="space-y-6">
               <div>
                 <h3 className="text-lg font-semibold">Contact Info</h3>
-                <p className="text-sm text-gray-600 mt-2">
-                  <a href="" className="text-[#ef4a60]">
+                <p className="text-sm text-[#ef4a60] mt-2">
                     dhruv786.oceanmtech@gmail.com
-                  </a>
                 </p>
               </div>
               <div>

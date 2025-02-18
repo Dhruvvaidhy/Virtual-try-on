@@ -97,7 +97,7 @@ const Signup = () => {
           <div className="mb-4">
             <label className="block text-gray-600 mb-1" htmlFor="password">
               Password
-            </label>
+            </label> 
             <input
               type="password"
               name="password"
@@ -140,7 +140,7 @@ const Signup = () => {
   );
 };
 
-export default Signup;
+export default Signup;  
 
 
 
