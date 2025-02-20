@@ -10,7 +10,7 @@ export default function VirtualFitTool() {
   const [outputImage, setOutputImage] = useState(null);
   const [loading, setLoading] = useState(false);
 
-  const api_key = "SG_15ae1b9c16b00d64"; 
+  const api_key = "SG_e1cd8b30ea608657"; 
   const url = "https://api.segmind.com/v1/try-on-diffusion";
 
   // Convert file to Base64
